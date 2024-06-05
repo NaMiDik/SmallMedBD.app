@@ -46,20 +46,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="fAddDiseases.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="fAddDiseases.Designer.cs">
-      <DependentUpon>fAddDiseases.cs</DependentUpon>
-    </Compile>
     <Compile Include="fMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="fMain.Designer.cs">
       <DependentUpon>fMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddDisease.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddDisease.Designer.cs">
+      <DependentUpon>AddDisease.cs</DependentUpon>
+    </Compile>
     <Compile Include="MedicineStock.cs" />
-    <Compile Include="Diseases.cs" />
     <Compile Include="fStart.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,14 +67,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="fAddDiseases.resx">
-      <DependentUpon>fAddDiseases.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="Student.cs" />
     <EmbeddedResource Include="fMain.resx">
       <DependentUpon>fMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fStart.resx">
       <DependentUpon>fStart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddDisease.resx">
+      <DependentUpon>AddDisease.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
