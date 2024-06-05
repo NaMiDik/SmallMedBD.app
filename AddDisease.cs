@@ -34,11 +34,11 @@ namespace Курсач
             TheDisease.Name = tbName.Text.Trim();
             TheDisease.Symptoms = tbSymptoms.Text.Trim();
             TheDisease.Procedures = tbProcedures.Text.Trim();
-            TheDisease.Age = int.Parse(tbAge.Text.Trim());
-            TheDisease.Semester = double.Parse(tbSemester.Text.Trim());
-            TheDisease.Scholarship = double.Parse(tbScholarship.Text.Trim());
-            TheDisease.HasHostel = chbHasHostel.Checked;
-            TheDisease.HasScholarship = chbHasScholarship.Checked;
+            TheDisease.RecommendedMedicines = tbRecommendedMedicines.Text.Trim();
+            TheDisease.Dot = int.Parse(tbDot.Text.Trim());
+            TheDisease.SeverityLevel = int.Parse(tbSeverityLevel.Text.Trim());
+            TheDisease.MortalityRate = double.Parse(tbMortalityRate.Text.Trim());
+            TheDisease.IsContagious = chbIsContagious.Checked;
 
             DialogResult = DialogResult.OK;
         }
@@ -55,11 +55,11 @@ namespace Курсач
                 tbName.Text = TheDisease.Name;
                 tbSymptoms.Text = TheDisease.Symptoms;
                 tbProcedures.Text = TheDisease.Procedures;
-                tbAge.Text = TheDisease.Age.ToString();
-                tbSemester.Text = TheDisease.Semester.ToString("0.00");
-                tbScholarship.Text = TheDisease.Scholarship.ToString("0.000");
-                chbHasHostel.Checked = TheDisease.HasHostel;
-                chbHasScholarship.Checked = TheDisease.HasScholarship;
+                tbRecommendedMedicines.Text = TheDisease.RecommendedMedicines;
+                tbDot.Text = TheDisease.Dot.ToString();
+                tbSeverityLevel.Text = TheDisease.SeverityLevel.ToString();
+                tbMortalityRate.Text = TheDisease.MortalityRate.ToString();
+                chbIsContagious.Checked = TheDisease.IsContagious;
             }
         }
 

@@ -44,34 +44,34 @@ namespace Курсач
             gvStudents.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
-            column.DataPropertyName = "Age";
-            column.Name = "Вік";
+            column.DataPropertyName = "RecommendedMedicines";
+            column.Name = "Рекомендовані ліки, к-сть";
             gvStudents.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
-            column.DataPropertyName = "Semester";
-            column.Name = "Семестер";
+            column.DataPropertyName = "Dot";
+            column.Name = "Тривалість лікування (дн)";
             gvStudents.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
-            column.DataPropertyName = "Scholarship";
-            column.Name = "Стипендія";
+            column.DataPropertyName = "SeverityLevel";
+            column.Name = "Рівень тяжкості (1-10)";
             column.Width = 100;
             gvStudents.Columns.Add(column);
 
-            column = new DataGridViewCheckBoxColumn();
-            column.DataPropertyName = "HasHostel";
-            column.Name = "Гуртожитoк";
+            column = new DataGridViewTextBoxColumn();
+            column.DataPropertyName = "MortalityRate";
+            column.Name = "Смертність %";
             column.Width = 80;
             gvStudents.Columns.Add(column);
 
             column = new DataGridViewCheckBoxColumn();
-            column.DataPropertyName = "HasScholarship";
-            column.Name = "Стипендія";
+            column.DataPropertyName = "IsContagious";
+            column.Name = "Заразна";
             column.Width = 80;
             gvStudents.Columns.Add(column);
 
-            bindSrcStudents.Add(new Disease("Грип", "Симптоми грипу", "Процедури для грипу", 18, 2, 0, true, false));
+            bindSrcStudents.Add(new Disease("Грип", "Симптоми грипу", "Процедури для грипу", "Сироп, 200мл", 5, 3, 0.5, true));
             EventArgs args = new EventArgs(); OnResize(args);
         }
 
@@ -137,9 +137,9 @@ namespace Курсач
                     foreach (Disease disease in bindSrcStudents.List)
                     {
                         sw.Write(disease.Name + "\t" + disease.Symptoms + "\t" +
-                        disease.Procedures + "\t" + disease.Age + "\t" + disease.Semester +
-                        "\t" + disease.Scholarship + "\t" + disease.HasHostel + "\t" +
-                        disease.HasScholarship + "\t\n");
+                        disease.Procedures + "\t" + disease.RecommendedMedicines + "\t" + disease.Dot +
+                        "\t" + disease.SeverityLevel + "\t" + disease.MortalityRate + "\t" +
+                        disease.IsContagious + "\t\n");
                     }
                 }
                 catch (Exception ex)
@@ -170,11 +170,11 @@ namespace Курсач
                         bw.Write(disease.Name);
                         bw.Write(disease.Symptoms);
                         bw.Write(disease.Procedures);
-                        bw.Write(disease.Age);
-                        bw.Write(disease.Semester);
-                        bw.Write(disease.Scholarship);
-                        bw.Write(disease.HasHostel);
-                        bw.Write(disease.HasScholarship);
+                        bw.Write(disease.RecommendedMedicines);
+                        bw.Write(disease.Dot);
+                        bw.Write(disease.SeverityLevel);
+                        bw.Write(disease.MortalityRate);
+                        bw.Write(disease.IsContagious);
                     }
                 }
                 catch (Exception ex) 
@@ -206,8 +206,8 @@ namespace Курсач
                     {
                         string[] split = s.Split('\t');
                         Disease disease = new Disease(split[0], split[1], split[2],
-                        int.Parse(split[3]), double.Parse(split[4]), double.Parse(split[5]),
-                        bool.Parse(split[6]), bool.Parse(split[7]));
+                        split[3], int.Parse(split[4]), int.Parse(split[5]),
+                        double.Parse(split[6]), bool.Parse(split[7]));
                         bindSrcStudents.Add(disease);
                     }
                 }
@@ -250,19 +250,19 @@ namespace Курсач
                                     disease.Procedures = br.ReadString();
                                     break;
                                 case 4:
-                                    disease.Age = br.ReadInt32();
+                                    disease.RecommendedMedicines = br.ReadString();
                                     break;
                                 case 5:
-                                    disease.Semester = br.ReadDouble();
+                                    disease.Dot = br.ReadInt32();
                                     break;
                                 case 6:
-                                    disease.Scholarship = br.ReadDouble();
+                                    disease.SeverityLevel = br.ReadInt32();
                                     break;
                                 case 7:
-                                    disease.HasHostel = br.ReadBoolean();
+                                    disease.MortalityRate = br.ReadDouble();
                                     break;
                                 case 8:
-                                    disease.HasScholarship = br.ReadBoolean();
+                                    disease.IsContagious = br.ReadBoolean();
                                     break;
 
                             }

@@ -18,14 +18,14 @@ namespace Курсач
     public class Disease : DiseaseBase
     {
         public string Procedures { get; set; }
-        public int Age { get; set; }
-        public double Semester { get; set; }
-        public double Scholarship { get; set; }
-        public bool HasHostel { get; set; }
-        public bool HasScholarship { get; set; }
+        public string RecommendedMedicines { get; set; }
+        public int Dot { get; set; }
+        public int SeverityLevel { get; set; }
+        public double MortalityRate { get; set; }
+        public bool IsContagious { get; set; }
         public override double CalculateSeverityIndex()
         {
-            return Scholarship * Semester * 6;
+            return SeverityLevel * Dot * 6;
         }
         public double GetSeverityIndex()
         {
@@ -34,16 +34,16 @@ namespace Курсач
         public Disease()
         {
         }
-        public Disease(string name, string symptoms, string procedures, int age, double semester, double scholarship, bool hasHostel, bool hasScholarship)
+        public Disease(string name, string symptoms, string procedures, string recommendedMedicines, int dot, int severityLevel, double mortalityRate, bool isContagious)
         {
             Name = name;
             Symptoms = symptoms;
             Procedures = procedures;
-            Age = age;
-            Semester = semester;
-            Scholarship = scholarship;
-            HasHostel = hasHostel;
-            HasScholarship = hasScholarship;
+            RecommendedMedicines = recommendedMedicines;
+            Dot = dot;
+            SeverityLevel = severityLevel;
+            MortalityRate = mortalityRate;
+            IsContagious = isContagious;
         }
     }
 }

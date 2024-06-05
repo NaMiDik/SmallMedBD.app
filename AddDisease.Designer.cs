@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tbScholarship = new System.Windows.Forms.TextBox();
-            this.tbSemester = new System.Windows.Forms.TextBox();
+            this.tbSeverityLevel = new System.Windows.Forms.TextBox();
+            this.tbDot = new System.Windows.Forms.TextBox();
             this.tbSymptoms = new System.Windows.Forms.TextBox();
-            this.tbAge = new System.Windows.Forms.TextBox();
+            this.tbRecommendedMedicines = new System.Windows.Forms.TextBox();
             this.tbProcedures = new System.Windows.Forms.TextBox();
             this.tbName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -42,21 +42,23 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.chbHasScholarship = new System.Windows.Forms.CheckBox();
-            this.chbHasHostel = new System.Windows.Forms.CheckBox();
+            this.chbIsContagious = new System.Windows.Forms.CheckBox();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCansel = new System.Windows.Forms.Button();
+            this.tbMortalityRate = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.tbScholarship);
-            this.groupBox1.Controls.Add(this.tbSemester);
+            this.groupBox1.Controls.Add(this.chbIsContagious);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.tbMortalityRate);
+            this.groupBox1.Controls.Add(this.tbSeverityLevel);
+            this.groupBox1.Controls.Add(this.tbDot);
             this.groupBox1.Controls.Add(this.tbSymptoms);
-            this.groupBox1.Controls.Add(this.tbAge);
+            this.groupBox1.Controls.Add(this.tbRecommendedMedicines);
             this.groupBox1.Controls.Add(this.tbProcedures);
             this.groupBox1.Controls.Add(this.tbName);
             this.groupBox1.Controls.Add(this.label6);
@@ -67,42 +69,42 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(265, 203);
+            this.groupBox1.Size = new System.Drawing.Size(289, 265);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Загальні данні";
             // 
-            // tbScholarship
+            // tbSeverityLevel
             // 
-            this.tbScholarship.Location = new System.Drawing.Point(154, 166);
-            this.tbScholarship.Name = "tbScholarship";
-            this.tbScholarship.Size = new System.Drawing.Size(100, 22);
-            this.tbScholarship.TabIndex = 11;
+            this.tbSeverityLevel.Location = new System.Drawing.Point(183, 166);
+            this.tbSeverityLevel.Name = "tbSeverityLevel";
+            this.tbSeverityLevel.Size = new System.Drawing.Size(100, 22);
+            this.tbSeverityLevel.TabIndex = 11;
             // 
-            // tbSemester
+            // tbDot
             // 
-            this.tbSemester.Location = new System.Drawing.Point(154, 138);
-            this.tbSemester.Name = "tbSemester";
-            this.tbSemester.Size = new System.Drawing.Size(100, 22);
-            this.tbSemester.TabIndex = 10;
+            this.tbDot.Location = new System.Drawing.Point(183, 138);
+            this.tbDot.Name = "tbDot";
+            this.tbDot.Size = new System.Drawing.Size(100, 22);
+            this.tbDot.TabIndex = 10;
             // 
             // tbSymptoms
             // 
-            this.tbSymptoms.Location = new System.Drawing.Point(154, 53);
+            this.tbSymptoms.Location = new System.Drawing.Point(183, 53);
             this.tbSymptoms.Name = "tbSymptoms";
             this.tbSymptoms.Size = new System.Drawing.Size(100, 22);
             this.tbSymptoms.TabIndex = 7;
             // 
-            // tbAge
+            // tbRecommendedMedicines
             // 
-            this.tbAge.Location = new System.Drawing.Point(154, 110);
-            this.tbAge.Name = "tbAge";
-            this.tbAge.Size = new System.Drawing.Size(100, 22);
-            this.tbAge.TabIndex = 9;
+            this.tbRecommendedMedicines.Location = new System.Drawing.Point(183, 110);
+            this.tbRecommendedMedicines.Name = "tbRecommendedMedicines";
+            this.tbRecommendedMedicines.Size = new System.Drawing.Size(100, 22);
+            this.tbRecommendedMedicines.TabIndex = 9;
             // 
             // tbProcedures
             // 
-            this.tbProcedures.Location = new System.Drawing.Point(154, 82);
+            this.tbProcedures.Location = new System.Drawing.Point(183, 82);
             this.tbProcedures.Name = "tbProcedures";
             this.tbProcedures.Size = new System.Drawing.Size(100, 22);
             this.tbProcedures.TabIndex = 8;
@@ -110,7 +112,7 @@
             // 
             // tbName
             // 
-            this.tbName.Location = new System.Drawing.Point(154, 24);
+            this.tbName.Location = new System.Drawing.Point(183, 21);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(100, 22);
             this.tbName.TabIndex = 6;
@@ -120,36 +122,36 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(12, 172);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(73, 16);
+            this.label6.Size = new System.Drawing.Size(144, 16);
             this.label6.TabIndex = 5;
-            this.label6.Text = "Стипендія";
+            this.label6.Text = "Рівень тяжкості (1-10)";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(12, 144);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 16);
+            this.label5.Size = new System.Drawing.Size(175, 16);
             this.label5.TabIndex = 4;
-            this.label5.Text = "Семестр";
+            this.label5.Text = "Тривалість лікування (дн)";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(12, 116);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(26, 16);
+            this.label4.Size = new System.Drawing.Size(174, 16);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Вік";
+            this.label4.Text = "Рекомендовані ліки, к-сть";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 88);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 16);
+            this.label3.Size = new System.Drawing.Size(81, 16);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Факультет";
+            this.label3.Text = "Процедури";
             // 
             // label2
             // 
@@ -170,37 +172,15 @@
             this.label1.Text = "Назва";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // groupBox2
+            // chbIsContagious
             // 
-            this.groupBox2.Controls.Add(this.chbHasScholarship);
-            this.groupBox2.Controls.Add(this.chbHasHostel);
-            this.groupBox2.Location = new System.Drawing.Point(12, 221);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(265, 108);
-            this.groupBox2.TabIndex = 12;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Інше";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
-            // 
-            // chbHasScholarship
-            // 
-            this.chbHasScholarship.AutoSize = true;
-            this.chbHasScholarship.Location = new System.Drawing.Point(6, 74);
-            this.chbHasScholarship.Name = "chbHasScholarship";
-            this.chbHasScholarship.Size = new System.Drawing.Size(213, 20);
-            this.chbHasScholarship.TabIndex = 1;
-            this.chbHasScholarship.Text = "Студент отримує стипендію";
-            this.chbHasScholarship.UseVisualStyleBackColor = true;
-            // 
-            // chbHasHostel
-            // 
-            this.chbHasHostel.AutoSize = true;
-            this.chbHasHostel.Location = new System.Drawing.Point(6, 36);
-            this.chbHasHostel.Name = "chbHasHostel";
-            this.chbHasHostel.Size = new System.Drawing.Size(242, 20);
-            this.chbHasHostel.TabIndex = 0;
-            this.chbHasHostel.Text = "Студент проживає у гуртожитку";
-            this.chbHasHostel.UseVisualStyleBackColor = true;
+            this.chbIsContagious.AutoSize = true;
+            this.chbIsContagious.Location = new System.Drawing.Point(15, 225);
+            this.chbIsContagious.Name = "chbIsContagious";
+            this.chbIsContagious.Size = new System.Drawing.Size(144, 20);
+            this.chbIsContagious.TabIndex = 1;
+            this.chbIsContagious.Text = "Хвороба заразна";
+            this.chbIsContagious.UseVisualStyleBackColor = true;
             // 
             // btnOk
             // 
@@ -222,14 +202,29 @@
             this.btnCansel.UseVisualStyleBackColor = true;
             this.btnCansel.Click += new System.EventHandler(this.btnCansel_Click);
             // 
+            // tbMortalityRate
+            // 
+            this.tbMortalityRate.Location = new System.Drawing.Point(183, 197);
+            this.tbMortalityRate.Name = "tbMortalityRate";
+            this.tbMortalityRate.Size = new System.Drawing.Size(100, 22);
+            this.tbMortalityRate.TabIndex = 15;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 203);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(95, 16);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Смертність %";
+            // 
             // AddDisease
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(433, 348);
+            this.ClientSize = new System.Drawing.Size(433, 482);
             this.Controls.Add(this.btnCansel);
             this.Controls.Add(this.btnOk);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
             this.Name = "AddDisease";
@@ -239,8 +234,6 @@
             this.Load += new System.EventHandler(this.fStudent_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -255,16 +248,16 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.TextBox tbScholarship;
-        private System.Windows.Forms.TextBox tbSemester;
-        private System.Windows.Forms.TextBox tbAge;
+        private System.Windows.Forms.TextBox tbSeverityLevel;
+        private System.Windows.Forms.TextBox tbDot;
+        private System.Windows.Forms.TextBox tbRecommendedMedicines;
         private System.Windows.Forms.TextBox tbProcedures;
         private System.Windows.Forms.TextBox tbSymptoms;
         private System.Windows.Forms.TextBox tbName;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.CheckBox chbHasScholarship;
-        private System.Windows.Forms.CheckBox chbHasHostel;
+        private System.Windows.Forms.CheckBox chbIsContagious;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCansel;
+        private System.Windows.Forms.TextBox tbMortalityRate;
+        private System.Windows.Forms.Label label7;
     }
 }
