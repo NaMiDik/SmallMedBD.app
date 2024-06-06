@@ -42,8 +42,8 @@
             this.btnOpenFromText = new System.Windows.Forms.ToolStripButton();
             this.btnOpenFromBinary = new System.Windows.Forms.ToolStripButton();
             this.btnExit = new System.Windows.Forms.ToolStripButton();
-            this.gvStudents = new System.Windows.Forms.DataGridView();
-            this.bindSrcStudents = new System.Windows.Forms.BindingSource(this.components);
+            this.gvDisease = new System.Windows.Forms.DataGridView();
+            this.bindSrcDiseases = new System.Windows.Forms.BindingSource(this.components);
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.tbGoMedBase = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -66,8 +66,8 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gvStudents)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindSrcStudents)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvDisease)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindSrcDiseases)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -91,7 +91,7 @@
             this.tbGoMedBase});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1139, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(1151, 31);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
@@ -102,7 +102,7 @@
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
             this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(29, 24);
+            this.btnAdd.Size = new System.Drawing.Size(29, 28);
             this.btnAdd.Text = "Додати запис про Студента";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -112,7 +112,7 @@
             this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
             this.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(29, 28);
+            this.btnEdit.Size = new System.Drawing.Size(29, 24);
             this.btnEdit.Text = "Редагувати запис";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
@@ -120,7 +120,7 @@
             // 
             this.tsSeparator1.BackColor = System.Drawing.SystemColors.Control;
             this.tsSeparator1.Name = "tsSeparator1";
-            this.tsSeparator1.Size = new System.Drawing.Size(6, 31);
+            this.tsSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
             // btnDel
             // 
@@ -128,7 +128,7 @@
             this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
             this.btnDel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(29, 28);
+            this.btnDel.Size = new System.Drawing.Size(29, 24);
             this.btnDel.Text = "Видалити запис";
             this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
@@ -138,14 +138,14 @@
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
             this.btnClear.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(29, 28);
+            this.btnClear.Size = new System.Drawing.Size(29, 24);
             this.btnClear.Text = "Очистити данні";
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // tsSeparator2
             // 
             this.tsSeparator2.Name = "tsSeparator2";
-            this.tsSeparator2.Size = new System.Drawing.Size(6, 31);
+            this.tsSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
             // btnSaveAsText
             // 
@@ -153,7 +153,7 @@
             this.btnSaveAsText.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveAsText.Image")));
             this.btnSaveAsText.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSaveAsText.Name = "btnSaveAsText";
-            this.btnSaveAsText.Size = new System.Drawing.Size(29, 28);
+            this.btnSaveAsText.Size = new System.Drawing.Size(29, 24);
             this.btnSaveAsText.Text = "Зберегти у текстовому форматі";
             this.btnSaveAsText.ToolTipText = "Зберегти у текстовому форматі";
             this.btnSaveAsText.Click += new System.EventHandler(this.btnSaveAsText_Click);
@@ -164,7 +164,7 @@
             this.btnSaveAsBinary.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveAsBinary.Image")));
             this.btnSaveAsBinary.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSaveAsBinary.Name = "btnSaveAsBinary";
-            this.btnSaveAsBinary.Size = new System.Drawing.Size(29, 28);
+            this.btnSaveAsBinary.Size = new System.Drawing.Size(29, 24);
             this.btnSaveAsBinary.Text = "Зберегти у бінарному форматі";
             this.btnSaveAsBinary.ToolTipText = "Зберегти у бінарному форматі";
             this.btnSaveAsBinary.Click += new System.EventHandler(this.btnSaveAsBinary_Click);
@@ -175,7 +175,7 @@
             this.btnOpenFromText.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenFromText.Image")));
             this.btnOpenFromText.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnOpenFromText.Name = "btnOpenFromText";
-            this.btnOpenFromText.Size = new System.Drawing.Size(29, 28);
+            this.btnOpenFromText.Size = new System.Drawing.Size(29, 24);
             this.btnOpenFromText.Text = "Читати текстові дані";
             this.btnOpenFromText.ToolTipText = "Читати текстові дані";
             this.btnOpenFromText.Click += new System.EventHandler(this.btnOpenFromText_Click);
@@ -186,7 +186,7 @@
             this.btnOpenFromBinary.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenFromBinary.Image")));
             this.btnOpenFromBinary.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnOpenFromBinary.Name = "btnOpenFromBinary";
-            this.btnOpenFromBinary.Size = new System.Drawing.Size(29, 28);
+            this.btnOpenFromBinary.Size = new System.Drawing.Size(29, 24);
             this.btnOpenFromBinary.Text = "Читати бінарні дані";
             this.btnOpenFromBinary.ToolTipText = "Читати бінарні дані";
             this.btnOpenFromBinary.Click += new System.EventHandler(this.btnOpenFromBinary_Click);
@@ -203,21 +203,21 @@
             this.btnExit.Text = "Вийти з програми";
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // gvStudents
+            // gvDisease
             // 
-            this.gvStudents.AllowUserToAddRows = false;
-            this.gvStudents.AllowUserToDeleteRows = false;
-            this.gvStudents.AutoGenerateColumns = false;
-            this.gvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvStudents.DataSource = this.bindSrcStudents;
-            this.gvStudents.Location = new System.Drawing.Point(0, 143);
-            this.gvStudents.Name = "gvStudents";
-            this.gvStudents.ReadOnly = true;
-            this.gvStudents.RowHeadersWidth = 51;
-            this.gvStudents.RowTemplate.Height = 24;
-            this.gvStudents.Size = new System.Drawing.Size(1139, 393);
-            this.gvStudents.TabIndex = 1;
-            this.gvStudents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvStudents_CellContentClick);
+            this.gvDisease.AllowUserToAddRows = false;
+            this.gvDisease.AllowUserToDeleteRows = false;
+            this.gvDisease.AutoGenerateColumns = false;
+            this.gvDisease.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvDisease.DataSource = this.bindSrcDiseases;
+            this.gvDisease.Location = new System.Drawing.Point(0, 143);
+            this.gvDisease.Name = "gvDisease";
+            this.gvDisease.ReadOnly = true;
+            this.gvDisease.RowHeadersWidth = 51;
+            this.gvDisease.RowTemplate.Height = 24;
+            this.gvDisease.Size = new System.Drawing.Size(1151, 393);
+            this.gvDisease.TabIndex = 1;
+            this.gvDisease.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvStudents_CellContentClick);
             // 
             // tbGoMedBase
             // 
@@ -226,7 +226,7 @@
             this.tbGoMedBase.Image = ((System.Drawing.Image)(resources.GetObject("tbGoMedBase.Image")));
             this.tbGoMedBase.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tbGoMedBase.Name = "tbGoMedBase";
-            this.tbGoMedBase.Size = new System.Drawing.Size(29, 24);
+            this.tbGoMedBase.Size = new System.Drawing.Size(29, 28);
             this.tbGoMedBase.Text = "Перейти до бази медикаментів";
             // 
             // groupBox1
@@ -285,7 +285,7 @@
             this.groupBox5.Controls.Add(this.comboBox3);
             this.groupBox5.Location = new System.Drawing.Point(776, 30);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(363, 113);
+            this.groupBox5.Size = new System.Drawing.Size(375, 113);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Фільтрація";
@@ -350,10 +350,11 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(257, 46);
+            this.textBox2.Location = new System.Drawing.Point(269, 48);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 22);
             this.textBox2.TabIndex = 2;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // button1
             // 
@@ -361,7 +362,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(121, 31);
             this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
+            this.button1.Text = "Шукати";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
@@ -370,7 +371,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(121, 31);
             this.button2.TabIndex = 4;
-            this.button2.Text = "button2";
+            this.button2.Text = "Скасувати";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // button3
@@ -379,7 +380,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(121, 31);
             this.button3.TabIndex = 5;
-            this.button3.Text = "button3";
+            this.button3.Text = "Відсортувати";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // button4
@@ -388,7 +389,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(119, 31);
             this.button4.TabIndex = 6;
-            this.button4.Text = "button4";
+            this.button4.Text = "Скасувати";
             this.button4.UseVisualStyleBackColor = true;
             // 
             // button5
@@ -397,16 +398,16 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(119, 31);
             this.button5.TabIndex = 7;
-            this.button5.Text = "button5";
+            this.button5.Text = "Фільтрувати\r\n";
             this.button5.UseVisualStyleBackColor = true;
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(238, 76);
+            this.button6.Location = new System.Drawing.Point(250, 76);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(119, 31);
             this.button6.TabIndex = 8;
-            this.button6.Text = "button6";
+            this.button6.Text = "Скасувати";
             this.button6.UseVisualStyleBackColor = true;
             // 
             // fMain
@@ -414,11 +415,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1139, 535);
+            this.ClientSize = new System.Drawing.Size(1151, 535);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.gvStudents);
+            this.Controls.Add(this.gvDisease);
             this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "fMain";
@@ -427,8 +428,8 @@
             this.Load += new System.EventHandler(this.fMain_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gvStudents)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindSrcStudents)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvDisease)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindSrcDiseases)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -450,8 +451,8 @@
         private System.Windows.Forms.ToolStripButton btnClear;
         private System.Windows.Forms.ToolStripSeparator tsSeparator2;
         private System.Windows.Forms.ToolStripButton btnExit;
-        private System.Windows.Forms.BindingSource bindSrcStudents;
-        private System.Windows.Forms.DataGridView gvStudents;
+        private System.Windows.Forms.BindingSource bindSrcDiseases;
+        private System.Windows.Forms.DataGridView gvDisease;
         private System.Windows.Forms.ToolStripButton btnSaveAsText;
         private System.Windows.Forms.ToolStripButton btnSaveAsBinary;
         private System.Windows.Forms.ToolStripButton btnOpenFromText;

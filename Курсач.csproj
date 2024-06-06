@@ -59,6 +59,7 @@
     <Compile Include="AddDisease.Designer.cs">
       <DependentUpon>AddDisease.cs</DependentUpon>
     </Compile>
+    <Compile Include="IActions_Table.cs" />
     <Compile Include="MedicineStock.cs" />
     <Compile Include="fStart.cs">
       <SubType>Form</SubType>

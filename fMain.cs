@@ -26,53 +26,53 @@ namespace Курсач
 
         private void fMain_Load(object sender, EventArgs e)
         {
-            gvStudents.AutoGenerateColumns = false;
+            gvDisease.AutoGenerateColumns = false;
 
             DataGridViewColumn column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "Name";
             column.Name = "Назва";
-            gvStudents.Columns.Add(column);
+            gvDisease.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "Symptoms";
             column.Name = "Симптоми";
-            gvStudents.Columns.Add(column);
+            gvDisease.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "Procedures";
             column.Name = "Процедури";
             column.Width = 150;
-            gvStudents.Columns.Add(column);
+            gvDisease.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "RecommendedMedicines";
             column.Name = "Рекомендовані ліки, к-сть";
-            gvStudents.Columns.Add(column);
+            gvDisease.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "Dot";
             column.Name = "Тривалість лікування (дн)";
-            gvStudents.Columns.Add(column);
+            gvDisease.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "SeverityLevel";
             column.Name = "Рівень тяжкості (1-10)";
             column.Width = 100;
-            gvStudents.Columns.Add(column);
+            gvDisease.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "MortalityRate";
             column.Name = "Смертність %";
             column.Width = 80;
-            gvStudents.Columns.Add(column);
+            gvDisease.Columns.Add(column);
 
             column = new DataGridViewCheckBoxColumn();
             column.DataPropertyName = "IsContagious";
             column.Name = "Заразна";
             column.Width = 80;
-            gvStudents.Columns.Add(column);
+            gvDisease.Columns.Add(column);
 
-            bindSrcStudents.Add(new Disease("Грип", "Симптоми грипу", "Процедури для грипу", "Сироп, 200мл", 5, 3, 0.5, true));
+            bindSrcDiseases.Add(new Disease("Грип", "Симптоми грипу", "Процедури для грипу", "Сироп, 200мл", 5, 3, 0.5, true));
             EventArgs args = new EventArgs(); OnResize(args);
         }
 
@@ -83,18 +83,18 @@ namespace Курсач
              AddDisease ad = new AddDisease(disease);
             if (ad.ShowDialog() == DialogResult.OK)
             {
-                bindSrcStudents.Add(disease);
+                bindSrcDiseases.Add(disease);
             }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            Disease disease = (Disease)bindSrcStudents.List[bindSrcStudents.Position];
+            Disease disease = (Disease)bindSrcDiseases.List[bindSrcDiseases.Position];
 
             AddDisease fs = new AddDisease(disease);
             if (fs.ShowDialog() == DialogResult.OK)
             {
-                bindSrcStudents.List[bindSrcStudents.Position] = disease;
+                bindSrcDiseases.List[bindSrcDiseases.Position] = disease;
             }
         }
 
@@ -103,7 +103,7 @@ namespace Курсач
             if (MessageBox.Show("Видалити поточний запис?", "Видалення запису",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
-                bindSrcStudents.RemoveCurrent();
+                bindSrcDiseases.RemoveCurrent();
             }
         }
 
@@ -113,7 +113,7 @@ namespace Курсач
                 "Очистити таблицю?\n\nВсі данні будуть втрачені", "Очищеня данних",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                bindSrcStudents.Clear();
+                bindSrcDiseases.Clear();
             }
         }
         private void btnExit_Click(object sender, EventArgs e)
@@ -135,7 +135,7 @@ namespace Курсач
                 sw = new StreamWriter(saveFileDialog.FileName, false, Encoding.UTF8);
                 try
                 {
-                    foreach (Disease disease in bindSrcStudents.List)
+                    foreach (Disease disease in bindSrcDiseases.List)
                     {
                         sw.Write(disease.Name + "\t" + disease.Symptoms + "\t" +
                         disease.Procedures + "\t" + disease.RecommendedMedicines + "\t" + disease.Dot +
@@ -166,7 +166,7 @@ namespace Курсач
                 bw = new BinaryWriter(saveFileDialog.OpenFile());
                 try
                 {
-                    foreach (Disease disease in bindSrcStudents.List)
+                    foreach (Disease disease in bindSrcDiseases.List)
                     {
                         bw.Write(disease.Name);
                         bw.Write(disease.Symptoms);
@@ -199,7 +199,7 @@ namespace Курсач
             StreamReader sr;
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                bindSrcStudents.Clear(); sr = new StreamReader(openFileDialog.FileName, Encoding.UTF8);
+                bindSrcDiseases.Clear(); sr = new StreamReader(openFileDialog.FileName, Encoding.UTF8);
                 string s;
                 try
                 {
@@ -209,7 +209,7 @@ namespace Курсач
                         Disease disease = new Disease(split[0], split[1], split[2],
                         split[3], int.Parse(split[4]), int.Parse(split[5]),
                         double.Parse(split[6]), bool.Parse(split[7]));
-                        bindSrcStudents.Add(disease);
+                        bindSrcDiseases.Add(disease);
                     }
                 }
                 catch (Exception ex)
@@ -230,7 +230,7 @@ namespace Курсач
             BinaryReader br;
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                bindSrcStudents.Clear();
+                bindSrcDiseases.Clear();
                 br = new BinaryReader(openFileDialog.OpenFile());
                 try
                 {
@@ -268,7 +268,7 @@ namespace Курсач
 
                             }
                         }
-                        bindSrcStudents.Add(disease);
+                        bindSrcDiseases.Add(disease);
                     }
                 }
                 catch (Exception ex)
@@ -285,6 +285,11 @@ namespace Курсач
         }
 
         private void gvStudents_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }
