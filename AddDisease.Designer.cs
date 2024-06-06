@@ -28,7 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddDisease));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chbIsContagious = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tbMortalityRate = new System.Windows.Forms.TextBox();
             this.tbSeverityLevel = new System.Windows.Forms.TextBox();
             this.tbDot = new System.Windows.Forms.TextBox();
             this.tbSymptoms = new System.Windows.Forms.TextBox();
@@ -42,11 +46,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.chbIsContagious = new System.Windows.Forms.CheckBox();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCansel = new System.Windows.Forms.Button();
-            this.tbMortalityRate = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,6 +74,32 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Загальні данні";
+            // 
+            // chbIsContagious
+            // 
+            this.chbIsContagious.AutoSize = true;
+            this.chbIsContagious.Location = new System.Drawing.Point(15, 225);
+            this.chbIsContagious.Name = "chbIsContagious";
+            this.chbIsContagious.Size = new System.Drawing.Size(144, 20);
+            this.chbIsContagious.TabIndex = 1;
+            this.chbIsContagious.Text = "Хвороба заразна";
+            this.chbIsContagious.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 203);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(95, 16);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Смертність %";
+            // 
+            // tbMortalityRate
+            // 
+            this.tbMortalityRate.Location = new System.Drawing.Point(183, 197);
+            this.tbMortalityRate.Name = "tbMortalityRate";
+            this.tbMortalityRate.Size = new System.Drawing.Size(100, 22);
+            this.tbMortalityRate.TabIndex = 15;
             // 
             // tbSeverityLevel
             // 
@@ -172,16 +199,6 @@
             this.label1.Text = "Назва";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // chbIsContagious
-            // 
-            this.chbIsContagious.AutoSize = true;
-            this.chbIsContagious.Location = new System.Drawing.Point(15, 225);
-            this.chbIsContagious.Name = "chbIsContagious";
-            this.chbIsContagious.Size = new System.Drawing.Size(144, 20);
-            this.chbIsContagious.TabIndex = 1;
-            this.chbIsContagious.Text = "Хвороба заразна";
-            this.chbIsContagious.UseVisualStyleBackColor = true;
-            // 
             // btnOk
             // 
             this.btnOk.Location = new System.Drawing.Point(307, 18);
@@ -202,36 +219,21 @@
             this.btnCansel.UseVisualStyleBackColor = true;
             this.btnCansel.Click += new System.EventHandler(this.btnCansel_Click);
             // 
-            // tbMortalityRate
-            // 
-            this.tbMortalityRate.Location = new System.Drawing.Point(183, 197);
-            this.tbMortalityRate.Name = "tbMortalityRate";
-            this.tbMortalityRate.Size = new System.Drawing.Size(100, 22);
-            this.tbMortalityRate.TabIndex = 15;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 203);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(95, 16);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Смертність %";
-            // 
             // AddDisease
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(433, 482);
+            this.ClientSize = new System.Drawing.Size(433, 290);
             this.Controls.Add(this.btnCansel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "AddDisease";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Данні про нового студента";
-            this.Load += new System.EventHandler(this.fStudent_Load);
+            this.Text = "TMBase";
+            this.Load += new System.EventHandler(this.AddDisease_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

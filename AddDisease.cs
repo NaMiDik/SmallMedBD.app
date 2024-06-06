@@ -48,7 +48,7 @@ namespace Курсач
             DialogResult = DialogResult.Cancel;
         }
 
-        private void fStudent_Load(object sender, EventArgs e)
+        private void AddDisease_Load(object sender, EventArgs e)
         {
             if (TheDisease != null)
             {

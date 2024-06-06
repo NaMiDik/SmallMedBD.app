@@ -41,6 +41,7 @@ namespace Курсач
             column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "Procedures";
             column.Name = "Процедури";
+            column.Width = 150;
             gvStudents.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
@@ -281,7 +282,6 @@ namespace Курсач
 
         private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-
         }
 
         private void gvStudents_CellContentClick(object sender, DataGridViewCellEventArgs e)
