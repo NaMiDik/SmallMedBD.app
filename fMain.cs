@@ -14,9 +14,47 @@ namespace Курсач
 {
     public partial class fMain : Form
     {
+        private List<Disease> stockDiseasesList;
+        public List<Disease> diseasesList = new List<Disease>();
         public fMain()
         {
             InitializeComponent();
+        }
+        private void CancelAll()
+        {
+            if (bindSrcDiseases.List != null && stockDiseasesList != null)
+            {
+                bindSrcDiseases.Clear();
+                foreach (Disease book in stockDiseasesList)
+                {
+                    bindSrcDiseases.Add(book);
+                }
+                AutoSaveData();
+            }
+        }
+        private void AutoSaveData()
+        {
+            StreamWriter sw = new StreamWriter("AutoSave.txt", false, Encoding.UTF8);
+            try
+            {
+                if (bindSrcDiseases.List != null && diseasesList != null)
+                {
+                    foreach (Disease disease in bindSrcDiseases.List)
+                    {
+                        sw.Write(disease.Name + "\t" + disease.Symptoms + "\t" +disease.Procedures + "\t" + disease.RecommendedMedicines +
+                        "\t" + disease.Dot + "\t" + disease.SeverityLevel + "\t" + disease.MortalityRate + "\t" + disease.IsContagious +"\t\n");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Сталась помилка: \n{0}", ex.Message, MessageBoxButtons.OK,
+               MessageBoxIcon.Error);
+            }
+            finally
+            {
+                sw.Close();
+            }
         }
         private void fMain_Resize(object sender, EventArgs e)
         {
@@ -72,8 +110,35 @@ namespace Курсач
             column.Width = 80;
             gvDisease.Columns.Add(column);
 
-            bindSrcDiseases.Add(new Disease("Грип", "Симптоми грипу", "Процедури для грипу", "Сироп, 200мл", 5, 3, 0.5, true));
-            EventArgs args = new EventArgs(); OnResize(args);
+            bindSrcDiseases.Clear();
+            gvDisease.DataSource = bindSrcDiseases;
+            stockDiseasesList = new List<Disease>();
+
+            FileStream fs = new FileStream("Disease.txt", FileMode.Open);
+            StreamReader sr = new StreamReader(fs, Encoding.UTF8);
+            string text;
+            try
+            {
+                while ((text = sr.ReadLine()) != null)
+                {
+                    string[] split = text.Split('\t');
+                    Disease disease = new Disease(split[0], split[1], split[2],
+                    split[3], int.Parse(split[4]), int.Parse(split[5]),
+                    double.Parse(split[6]), bool.Parse(split[7]));
+                    bindSrcDiseases.Add(disease);
+                    stockDiseasesList.Add(disease);
+                }
+                diseasesList = stockDiseasesList;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(string.Format("Сталась помилка: \n{0}", ex.Message), "Помилка",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                sr.Close();
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -85,6 +150,7 @@ namespace Курсач
             {
                 bindSrcDiseases.Add(disease);
             }
+            AutoSaveData();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -152,12 +218,13 @@ namespace Курсач
                 {
                     sw.Close();
                 }
+                AutoSaveData();
             }
         }
 
         private void btnSaveAsBinary_Click(object sender, EventArgs e)
         {
-            saveFileDialog.Filter = "Файли даних (*.students)|*.students|All files (*.*)|*.*";
+            saveFileDialog.Filter = "Файли даних (*.diseases)|*.diseases|All files (*.*)|*.*";
             saveFileDialog.Title = "Зберегти дані у бінарному форматі";
             saveFileDialog.InitialDirectory = Application.StartupPath;
             BinaryWriter bw;
@@ -192,9 +259,10 @@ namespace Курсач
 
         private void btnOpenFromText_Click(object sender, EventArgs e)
         {
+            stockDiseasesList = new List<Disease>();
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "";
-            openFileDialog.Title = "";
+            openFileDialog.Filter = "Текстові файли (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog.Title = "Прочитати дані у текстовому форматi";
             openFileDialog.InitialDirectory = Application.StartupPath;
             StreamReader sr;
             if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -219,13 +287,15 @@ namespace Курсач
                 }
                 finally { sr.Close(); }
             }
+            AutoSaveData();
         }
 
         private void btnOpenFromBinary_Click(object sender, EventArgs e)
         {
+            stockDiseasesList = new List<Disease>();
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "";
-            openFileDialog.Title = "";
+            openFileDialog.Filter = "Файли даних (*.diseases)|*.diseases|All files (*.*)|*.*";
+            openFileDialog.Title = "Прочитати дані у бінарному форматі";
             openFileDialog.InitialDirectory = Application.StartupPath;
             BinaryReader br;
             if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -292,6 +362,94 @@ namespace Курсач
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            int searchKey = cb_Search.SelectedIndex;
+            string text = tbSearch.Text.Trim();
+            IActions_Table fMainAct = new Disease_Actions();
+            diseasesList.Clear();
+            foreach (Disease disease in bindSrcDiseases.List)
+            {
+                diseasesList.Add(disease);
+            }
+            diseasesList = fMainAct.Search(diseasesList, cb_Search.SelectedIndex, tbSearch.Text.Trim());
+            bindSrcDiseases.Clear();
+            foreach (Disease disease in diseasesList)
+            {
+                bindSrcDiseases.Add(disease);
+            }
+            if (diseasesList.Count == 0)
+            {
+                MessageBox.Show("Збігів не знайдено.", "Пошукові результати", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+            }
+            AutoSaveData();
+        }
+
+        private void btnCancelSearch_Click(object sender, EventArgs e)
+        {
+            CancelAll();
+            tbSearch.Clear();
+            cb_Search.Text = "";
+        }
+
+        private void btnSort_Click(object sender, EventArgs e)
+        {
+            IActions_Table HomeLibraryAct = new Disease_Actions();
+            diseasesList.Clear();
+            foreach (Disease book in bindSrcDiseases.List)
+            {
+                diseasesList.Add(book);
+            }
+            diseasesList = HomeLibraryAct.Sort(diseasesList, cbSort.SelectedIndex);
+            bindSrcDiseases.Clear();
+            foreach (Disease book in diseasesList)
+            {
+                bindSrcDiseases.Add(book);
+            }
+            if (diseasesList.Count == 0)
+            {
+                MessageBox.Show("Сортування неможливе.", "Результат сортування", MessageBoxButtons.OK,
+               MessageBoxIcon.Information);
+            }
+            AutoSaveData();
+        }
+
+        private void btnCanselSort_Click(object sender, EventArgs e)
+        {
+            CancelAll();
+            cbSort.Text = "";
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            IActions_Table fMainAct = new Disease_Actions();
+            diseasesList.Clear();
+            foreach (Disease disease in bindSrcDiseases.List)
+            {
+                diseasesList.Add(disease);
+            }
+            diseasesList = fMainAct.Filter(diseasesList, cbFilter.SelectedIndex, int.Parse(tbFilter.Text));
+            bindSrcDiseases.Clear();
+            foreach (Disease disease in diseasesList)
+            {
+                bindSrcDiseases.Add(disease);
+            }
+            if (diseasesList.Count == 0)
+            {
+                MessageBox.Show("Дані відсутні.", "Результат фільтрування", MessageBoxButtons.OK,
+               MessageBoxIcon.Information);
+            }
+            AutoSaveData();
+        }
+
+        private void btnCanselFilter_Click(object sender, EventArgs e)
+        {
+            CancelAll();
+            tbFilter.Clear();
+            cbFilter.Text = "";
         }
     }
 }

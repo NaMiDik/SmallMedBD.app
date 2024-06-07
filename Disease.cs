@@ -10,10 +10,7 @@ namespace Курсач
     {
         public string Name { get; set; }
         public string Symptoms { get; set; }
-        public virtual double CalculateSeverityIndex()
-        {
-            return CalculateSeverityIndex();
-        }
+        public abstract double CalculateSeverityIndex();
     }
     public class Disease : DiseaseBase
     {
@@ -25,7 +22,7 @@ namespace Курсач
         public bool IsContagious { get; set; }
         public override double CalculateSeverityIndex()
         {
-            return SeverityLevel * Dot * 6;
+            return SeverityLevel * Dot;
         }
         public double GetSeverityIndex()
         {

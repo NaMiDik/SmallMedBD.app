@@ -104,6 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\bgStartImage.jpg" />
+    <Content Include="images\Disease.txt" />
     <Content Include="images\IconProg.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
