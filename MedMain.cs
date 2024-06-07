@@ -12,37 +12,36 @@ using System.Linq.Expressions;
     
 namespace Курсач
 {
-    public partial class fMain : Form
+    public partial class MedMain : Form
     {
-        private List<Disease> stockDiseasesList;
-        public List<Disease> diseasesList = new List<Disease>();
-        public fMain()
+        private List<MedicineStock> stockMedicineStocksList;
+        public List<MedicineStock> medicinestocksList = new List<MedicineStock>();
+        public MedMain()
         {
             InitializeComponent();
         }
         private void CancelAll()
         {
-            if (bindSrcDiseases.List != null && stockDiseasesList != null)
+            if (bindSrcMed.List != null && stockMedicineStocksList != null)
             {
-                bindSrcDiseases.Clear();
-                foreach (Disease book in stockDiseasesList)
+                bindSrcMed.Clear();
+                foreach (MedicineStock med in stockMedicineStocksList)
                 {
-                    bindSrcDiseases.Add(book);
+                    bindSrcMed.Add(med);
                 }
                 AutoSaveData();
             }
         }
         private void AutoSaveData()
         {
-            StreamWriter sw = new StreamWriter("AutoSave.txt", false, Encoding.UTF8);
+            StreamWriter sw = new StreamWriter("AutoSaveMed.txt", false, Encoding.UTF8);
             try
             {
-                if (bindSrcDiseases.List != null && diseasesList != null)
+                if (bindSrcMed.List != null && medicinestocksList != null)
                 {
-                    foreach (Disease disease in bindSrcDiseases.List)
+                    foreach (MedicineStock med in bindSrcMed.List)
                     {
-                        sw.Write(disease.Name + "\t" + disease.Symptoms + "\t" +disease.Procedures + "\t" + disease.RecommendedMedicines +
-                        "\t" + disease.Dot + "\t" + disease.SeverityLevel + "\t" + disease.MortalityRate + "\t" + disease.IsContagious +"\t\n");
+                        sw.Write(med.Name + "\t" + med.Quantity + "\t" + med.IsSubstitutable + "\t" + med.Price +"\t\n");
                     }
                 }
             }
@@ -56,65 +55,45 @@ namespace Курсач
                 sw.Close();
             }
         }
-        private void fMain_Resize(object sender, EventArgs e)
+        private void MedMain_Resize(object sender, EventArgs e)
         {
             int buttonsSize = 9 * btnAdd.Width + 3 * tsSeparator1.Width;
             btnExit.Margin = new Padding(Width - buttonsSize, 0, 0, 0);
         }
 
-        private void fMain_Load(object sender, EventArgs e)
+        private void MedMain_Load(object sender, EventArgs e)
         {
-            gvDisease.AutoGenerateColumns = false;
+            gvMed.AutoGenerateColumns = false;
 
             DataGridViewColumn column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "Name";
             column.Name = "Назва";
-            gvDisease.Columns.Add(column);
+            column.Width = 130;
+            gvMed.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
-            column.DataPropertyName = "Symptoms";
-            column.Name = "Симптоми";
-            gvDisease.Columns.Add(column);
+            column.DataPropertyName = "Quantity";
+            column.Name = "Кількість";
+            gvMed.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
-            column.DataPropertyName = "Procedures";
-            column.Name = "Процедури";
-            column.Width = 150;
-            gvDisease.Columns.Add(column);
-
-            column = new DataGridViewTextBoxColumn();
-            column.DataPropertyName = "RecommendedMedicines";
-            column.Name = "Рекомендовані ліки, к-сть";
-            gvDisease.Columns.Add(column);
-
-            column = new DataGridViewTextBoxColumn();
-            column.DataPropertyName = "Dot";
-            column.Name = "Тривалість лікування (дн)";
-            gvDisease.Columns.Add(column);
-
-            column = new DataGridViewTextBoxColumn();
-            column.DataPropertyName = "SeverityLevel";
-            column.Name = "Рівень тяжкості (1-10)";
+            column.DataPropertyName = "Price";
+            column.Name = "Ціна (грн)";
             column.Width = 100;
-            gvDisease.Columns.Add(column);
+            gvMed.Columns.Add(column);
 
-            column = new DataGridViewTextBoxColumn();
-            column.DataPropertyName = "MortalityRate";
-            column.Name = "Смертність %";
-            column.Width = 80;
-            gvDisease.Columns.Add(column);
 
             column = new DataGridViewCheckBoxColumn();
-            column.DataPropertyName = "IsContagious";
-            column.Name = "Заразна";
-            column.Width = 80;
-            gvDisease.Columns.Add(column);
+            column.DataPropertyName = "IsSubstitutable";
+            column.Name = "Взаємозамінна";
+            column.Width = 120;
+            gvMed.Columns.Add(column);
 
-            bindSrcDiseases.Clear();
-            gvDisease.DataSource = bindSrcDiseases;
-            stockDiseasesList = new List<Disease>();
+            bindSrcMed.Clear();
+            gvMed.DataSource = bindSrcMed;
+            stockMedicineStocksList = new List<MedicineStock>();
 
-            FileStream fs = new FileStream("Disease.txt", FileMode.Open);
+            FileStream fs = new FileStream("MedicineStock.txt", FileMode.Open);
             StreamReader sr = new StreamReader(fs, Encoding.UTF8);
             string text;
             try
@@ -122,15 +101,14 @@ namespace Курсач
                 while ((text = sr.ReadLine()) != null)
                 {
                     string[] split = text.Split('\t');
-                    Disease disease = new Disease(split[0], split[1], split[2],
-                    split[3], int.Parse(split[4]), int.Parse(split[5]),
-                    double.Parse(split[6]), bool.Parse(split[7]));
-                    bindSrcDiseases.Add(disease);
-                    stockDiseasesList.Add(disease);
+                    MedicineStock med = new MedicineStock(split[0],
+                    int.Parse(split[1]), bool.Parse(split[3]), double.Parse(split[2]));
+                    bindSrcMed.Add(med);
+                    stockMedicineStocksList.Add(med);
                 }
-                diseasesList = stockDiseasesList;
+                medicinestocksList = stockMedicineStocksList;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(string.Format("Сталась помилка: \n{0}", ex.Message), "Помилка",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -143,24 +121,24 @@ namespace Курсач
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Disease disease = new Disease();
+            MedicineStock med = new MedicineStock();
 
-             AddDisease ad = new AddDisease(disease);
+             AddMed ad = new AddMed(med);
             if (ad.ShowDialog() == DialogResult.OK)
             {
-                bindSrcDiseases.Add(disease);
+                bindSrcMed.Add(med);
             }
             AutoSaveData();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            Disease disease = (Disease)bindSrcDiseases.List[bindSrcDiseases.Position];
+            MedicineStock med = (MedicineStock)bindSrcMed.List[bindSrcMed.Position];
 
-            AddDisease fs = new AddDisease(disease);
+            AddMed fs = new AddMed(med);
             if (fs.ShowDialog() == DialogResult.OK)
             {
-                bindSrcDiseases.List[bindSrcDiseases.Position] = disease;
+                bindSrcMed.List[bindSrcMed.Position] = med;
             }
         }
 
@@ -169,7 +147,7 @@ namespace Курсач
             if (MessageBox.Show("Видалити поточний запис?", "Видалення запису",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
-                bindSrcDiseases.RemoveCurrent();
+                bindSrcMed.RemoveCurrent();
             }
         }
 
@@ -179,7 +157,7 @@ namespace Курсач
                 "Очистити таблицю?\n\nВсі данні будуть втрачені", "Очищеня данних",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                bindSrcDiseases.Clear();
+                bindSrcMed.Clear();
             }
         }
         private void btnExit_Click(object sender, EventArgs e)
@@ -201,12 +179,10 @@ namespace Курсач
                 sw = new StreamWriter(saveFileDialog.FileName, false, Encoding.UTF8);
                 try
                 {
-                    foreach (Disease disease in bindSrcDiseases.List)
+                    foreach (MedicineStock med in bindSrcMed.List)
                     {
-                        sw.Write(disease.Name + "\t" + disease.Symptoms + "\t" +
-                        disease.Procedures + "\t" + disease.RecommendedMedicines + "\t" + disease.Dot +
-                        "\t" + disease.SeverityLevel + "\t" + disease.MortalityRate + "\t" +
-                        disease.IsContagious + "\t\n");
+                        sw.Write(med.Name + "\t" + med.Quantity + "\t" +
+                        med.Price + "\t" + med.IsSubstitutable + "\t\n");
                     }
                 }
                 catch (Exception ex)
@@ -224,7 +200,7 @@ namespace Курсач
 
         private void btnSaveAsBinary_Click(object sender, EventArgs e)
         {
-            saveFileDialog.Filter = "Файли даних (*.diseases)|*.diseases|All files (*.*)|*.*";
+            saveFileDialog.Filter = "Файли даних (*.med)|*.med|All files (*.*)|*.*";
             saveFileDialog.Title = "Зберегти дані у бінарному форматі";
             saveFileDialog.InitialDirectory = Application.StartupPath;
             BinaryWriter bw;
@@ -233,16 +209,12 @@ namespace Курсач
                 bw = new BinaryWriter(saveFileDialog.OpenFile());
                 try
                 {
-                    foreach (Disease disease in bindSrcDiseases.List)
+                    foreach (MedicineStock med in bindSrcMed.List)
                     {
-                        bw.Write(disease.Name);
-                        bw.Write(disease.Symptoms);
-                        bw.Write(disease.Procedures);
-                        bw.Write(disease.RecommendedMedicines);
-                        bw.Write(disease.Dot);
-                        bw.Write(disease.SeverityLevel);
-                        bw.Write(disease.MortalityRate);
-                        bw.Write(disease.IsContagious);
+                        bw.Write(med.Name);
+                        bw.Write(med.Quantity);
+                        bw.Write(med.Price);
+                        bw.Write(med.IsSubstitutable);
                     }
                 }
                 catch (Exception ex) 
@@ -259,7 +231,7 @@ namespace Курсач
 
         private void btnOpenFromText_Click(object sender, EventArgs e)
         {
-            stockDiseasesList = new List<Disease>();
+            stockMedicineStocksList = new List<MedicineStock>();
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Текстові файли (*.txt)|*.txt|All files (*.*)|*.*";
             openFileDialog.Title = "Прочитати дані у текстовому форматi";
@@ -267,17 +239,15 @@ namespace Курсач
             StreamReader sr;
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                bindSrcDiseases.Clear(); sr = new StreamReader(openFileDialog.FileName, Encoding.UTF8);
+                bindSrcMed.Clear(); sr = new StreamReader(openFileDialog.FileName, Encoding.UTF8);
                 string s;
                 try
                 {
                     while ((s = sr.ReadLine()) != null)
                     {
                         string[] split = s.Split('\t');
-                        Disease disease = new Disease(split[0], split[1], split[2],
-                        split[3], int.Parse(split[4]), int.Parse(split[5]),
-                        double.Parse(split[6]), bool.Parse(split[7]));
-                        bindSrcDiseases.Add(disease);
+                        MedicineStock med = new MedicineStock(split[0], int.Parse(split[1]), bool.Parse(split[3]), double.Parse(split[2]));
+                        bindSrcMed.Add(med);
                     }
                 }
                 catch (Exception ex)
@@ -292,53 +262,40 @@ namespace Курсач
 
         private void btnOpenFromBinary_Click(object sender, EventArgs e)
         {
-            stockDiseasesList = new List<Disease>();
+            stockMedicineStocksList = new List<MedicineStock>();
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Файли даних (*.diseases)|*.diseases|All files (*.*)|*.*";
+            openFileDialog.Filter = "Файли даних (*.med)|*.med|All files (*.*)|*.*";
             openFileDialog.Title = "Прочитати дані у бінарному форматі";
             openFileDialog.InitialDirectory = Application.StartupPath;
             BinaryReader br;
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                bindSrcDiseases.Clear();
+                bindSrcMed.Clear();
                 br = new BinaryReader(openFileDialog.OpenFile());
                 try
                 {
-                    Disease disease; while (br.BaseStream.Position < br.BaseStream.Length)
+                    MedicineStock med; while (br.BaseStream.Position < br.BaseStream.Length)
                     {
-                        disease = new Disease();
+                        med = new MedicineStock();
                         for (int i = 1; i <= 8; i++)
                         {
                             switch (i)
                             {
                                 case 1:
-                                    disease.Name = br.ReadString();
+                                    med.Name = br.ReadString();
                                     break;
                                 case 2:
-                                    disease.Symptoms = br.ReadString();
+                                    med.Quantity = br.ReadInt32();
                                     break;
                                 case 3:
-                                    disease.Procedures = br.ReadString();
+                                    med.Price = br.ReadDouble();
                                     break;
                                 case 4:
-                                    disease.RecommendedMedicines = br.ReadString();
+                                    med.IsSubstitutable = br.ReadBoolean();
                                     break;
-                                case 5:
-                                    disease.Dot = br.ReadInt32();
-                                    break;
-                                case 6:
-                                    disease.SeverityLevel = br.ReadInt32();
-                                    break;
-                                case 7:
-                                    disease.MortalityRate = br.ReadDouble();
-                                    break;
-                                case 8:
-                                    disease.IsContagious = br.ReadBoolean();
-                                    break;
-
                             }
                         }
-                        bindSrcDiseases.Add(disease);
+                        bindSrcMed.Add(med);
                     }
                 }
                 catch (Exception ex)
@@ -368,19 +325,19 @@ namespace Курсач
         {
             int searchKey = cb_Search.SelectedIndex;
             string text = tbSearch.Text.Trim();
-            IActions_Table fMainAct = new Disease_Actions();
-            diseasesList.Clear();
-            foreach (Disease disease in bindSrcDiseases.List)
+            MIActions_Table MedMainAct = new Med_Actions();
+            medicinestocksList.Clear();
+            foreach (MedicineStock med in bindSrcMed.List)
             {
-                diseasesList.Add(disease);
+                medicinestocksList.Add(med);
             }
-            diseasesList = fMainAct.Search(diseasesList, cb_Search.SelectedIndex, tbSearch.Text.Trim());
-            bindSrcDiseases.Clear();
-            foreach (Disease disease in diseasesList)
+            medicinestocksList = MedMainAct.Search(medicinestocksList, cb_Search.SelectedIndex, tbSearch.Text.Trim());
+            bindSrcMed.Clear();
+            foreach (MedicineStock med in medicinestocksList)
             {
-                bindSrcDiseases.Add(disease);
+                bindSrcMed.Add(med);
             }
-            if (diseasesList.Count == 0)
+            if (medicinestocksList.Count == 0)
             {
                 MessageBox.Show("Збігів не знайдено.", "Пошукові результати", MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
@@ -397,19 +354,19 @@ namespace Курсач
 
         private void btnSort_Click(object sender, EventArgs e)
         {
-            IActions_Table fMainAct = new Disease_Actions();
-            diseasesList.Clear();
-            foreach (Disease disease in bindSrcDiseases.List)
+            MIActions_Table MedMainAct = new Med_Actions();
+            medicinestocksList.Clear();
+            foreach (MedicineStock med in bindSrcMed.List)
             {
-                diseasesList.Add(disease);
+                medicinestocksList.Add(med);
             }
-            diseasesList = fMainAct.Sort(diseasesList, cbSort.SelectedIndex);
-            bindSrcDiseases.Clear();
-            foreach (Disease disease in diseasesList)
+            medicinestocksList = MedMainAct.Sort(medicinestocksList, cbSort.SelectedIndex);
+            bindSrcMed.Clear();
+            foreach (MedicineStock med in medicinestocksList)
             {
-                bindSrcDiseases.Add(disease);
+                bindSrcMed.Add(med);
             }
-            if (diseasesList.Count == 0)
+            if (medicinestocksList.Count == 0)
             {
                 MessageBox.Show("Сортування неможливе.", "Результат сортування", MessageBoxButtons.OK,
                MessageBoxIcon.Information);
@@ -425,19 +382,19 @@ namespace Курсач
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
-            IActions_Table fMainAct = new Disease_Actions();
-            diseasesList.Clear();
-            foreach (Disease disease in bindSrcDiseases.List)
+            MIActions_Table fMainAct = new Med_Actions();
+            medicinestocksList.Clear();
+            foreach (MedicineStock med in bindSrcMed.List)
             {
-                diseasesList.Add(disease);
+                medicinestocksList.Add(med);
             }
-            diseasesList = fMainAct.Filter(diseasesList, cbFilter.SelectedIndex, int.Parse(tbFilter.Text));
-            bindSrcDiseases.Clear();
-            foreach (Disease disease in diseasesList)
+            medicinestocksList = fMainAct.Filter(medicinestocksList, cbFilter.SelectedIndex, int.Parse(tbFilter.Text));
+            bindSrcMed.Clear();
+            foreach (MedicineStock med in medicinestocksList)
             {
-                bindSrcDiseases.Add(disease);
+                bindSrcMed.Add(med);
             }
-            if (diseasesList.Count == 0)
+            if (medicinestocksList.Count == 0)
             {
                 MessageBox.Show("Дані відсутні.", "Результат фільтрування", MessageBoxButtons.OK,
                MessageBoxIcon.Information);
@@ -452,11 +409,11 @@ namespace Курсач
             cbFilter.Text = "";
         }
 
-        private void tbGoMedBase_Click(object sender, EventArgs e)
+        private void tbGoDiseaseBase_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MedMain medmain = new MedMain();
-            medmain.Show();
+            fMain fmain = new fMain();
+            fmain.Show();
         }
     }
 }

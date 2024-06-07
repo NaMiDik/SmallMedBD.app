@@ -13,6 +13,8 @@ namespace Курсач
         public bool IsSubstitutable { get; set; } // Чи є взаємозамінним
         public double Price { get; set; } // Ціна медикаменту
 
+        public MedicineStock() { }
+
         public MedicineStock(string name, int quantity, bool isSubstitutable, double price)
         {
             Name = name;

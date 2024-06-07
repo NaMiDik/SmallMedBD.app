@@ -10,7 +10,10 @@ namespace Курсач
     {
         public string Name { get; set; }
         public string Symptoms { get; set; }
-        public abstract double CalculateSeverityIndex();
+        public virtual double CalculateSeverityIndex()
+        {
+            return 0;
+        }
     }
     public class Disease : DiseaseBase
     {
