@@ -127,12 +127,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="IconProg.ico" />
-    <Content Include="images\AutoSave.txt" />
-    <Content Include="images\AutoSaveMed.txt" />
     <Content Include="images\bgStartImage.jpg" />
-    <Content Include="images\Disease.txt" />
     <Content Include="images\IconProg.ico" />
-    <Content Include="images\MedicineStock.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

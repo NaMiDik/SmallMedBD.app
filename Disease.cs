@@ -29,7 +29,7 @@ namespace Курсач
         }
         public override double CalculateSeverityIndex()
         {
-            return SeverityLevel * Dot;
+            return Math.Round(SeverityLevel * MortalityRate / 100, 2);
         }
         public Disease()
         {

@@ -18,17 +18,6 @@ namespace Курсач
             TheDisease = d;
         InitializeComponent();
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnOk_Click(object sender, EventArgs e)
         {
             TheDisease.Name = tbName.Text.Trim();
@@ -61,11 +50,6 @@ namespace Курсач
                 tbMortalityRate.Text = TheDisease.MortalityRate.ToString();
                 chbIsContagious.Checked = TheDisease.IsContagious;
             }
-        }
-
-        private void tbUniversity_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

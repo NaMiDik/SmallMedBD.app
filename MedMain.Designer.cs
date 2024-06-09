@@ -91,7 +91,7 @@
             this.tbGoDiseaseBase});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(645, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(671, 27);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
@@ -229,7 +229,7 @@
             this.gvMed.ReadOnly = true;
             this.gvMed.RowHeadersWidth = 51;
             this.gvMed.RowTemplate.Height = 24;
-            this.gvMed.Size = new System.Drawing.Size(645, 393);
+            this.gvMed.Size = new System.Drawing.Size(671, 387);
             this.gvMed.TabIndex = 1;
             this.gvMed.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvStudents_CellContentClick);
             // 
@@ -321,7 +321,7 @@
             this.groupBox4.Controls.Add(this.cbSort);
             this.groupBox4.Location = new System.Drawing.Point(209, 30);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(209, 113);
+            this.groupBox4.Size = new System.Drawing.Size(231, 113);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Сортування";
@@ -338,7 +338,7 @@
             // 
             // btnCanselSort
             // 
-            this.btnCanselSort.Location = new System.Drawing.Point(117, 76);
+            this.btnCanselSort.Location = new System.Drawing.Point(140, 76);
             this.btnCanselSort.Name = "btnCanselSort";
             this.btnCanselSort.Size = new System.Drawing.Size(85, 31);
             this.btnCanselSort.TabIndex = 6;
@@ -364,7 +364,7 @@
             "Ціна"});
             this.cbSort.Location = new System.Drawing.Point(10, 46);
             this.cbSort.Name = "cbSort";
-            this.cbSort.Size = new System.Drawing.Size(192, 24);
+            this.cbSort.Size = new System.Drawing.Size(215, 24);
             this.cbSort.TabIndex = 0;
             // 
             // groupBox5
@@ -374,7 +374,7 @@
             this.groupBox5.Controls.Add(this.tbFilter);
             this.groupBox5.Controls.Add(this.label3);
             this.groupBox5.Controls.Add(this.cbFilter);
-            this.groupBox5.Location = new System.Drawing.Point(414, 30);
+            this.groupBox5.Location = new System.Drawing.Point(440, 30);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(231, 113);
             this.groupBox5.TabIndex = 4;
@@ -434,7 +434,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(645, 535);
+            this.ClientSize = new System.Drawing.Size(671, 529);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox1);

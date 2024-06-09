@@ -120,7 +120,7 @@ namespace Курсач
             gvDisease.DataSource = bindSrcDiseases;
             stockDiseasesList = new List<Disease>();
 
-            FileStream fs = new FileStream("Disease.txt", FileMode.Open);
+            FileStream fs = new FileStream("AutoSave.txt", FileMode.Open);
             StreamReader sr = new StreamReader(fs, Encoding.UTF8);
             string text;
             try
@@ -168,6 +168,7 @@ namespace Курсач
             {
                 bindSrcDiseases.List[bindSrcDiseases.Position] = disease;
             }
+            AutoSaveData();
         }
 
         private void btnDel_Click(object sender, EventArgs e)
@@ -177,6 +178,7 @@ namespace Курсач
             {
                 bindSrcDiseases.RemoveCurrent();
             }
+            AutoSaveData();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -195,6 +197,7 @@ namespace Курсач
             {
                 Application.Exit();
             }
+            AutoSaveData();
         }
         private void btnSaveAsText_Click(object sender, EventArgs e)
         {
@@ -355,21 +358,6 @@ namespace Курсач
                 finally { br.Close(); }
             }
         }
-
-        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-        }
-
-        private void gvStudents_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             int searchKey = cb_Search.SelectedIndex;
@@ -463,6 +451,7 @@ namespace Курсач
             this.Hide();
             MedMain medmain = new MedMain();
             medmain.Show();
+            AutoSaveData();
         }
     }
 }

@@ -52,8 +52,6 @@
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cb_Search = new System.Windows.Forms.ComboBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnSort = new System.Windows.Forms.Button();
             this.btnCanselSort = new System.Windows.Forms.Button();
@@ -91,10 +89,9 @@
             this.tbGoMedBase});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1151, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(1287, 27);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
-            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
             // btnAdd
             // 
@@ -102,7 +99,7 @@
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
             this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(29, 28);
+            this.btnAdd.Size = new System.Drawing.Size(29, 24);
             this.btnAdd.Text = "Додати запис про Хворобу";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -218,6 +215,9 @@
             // 
             this.gvDisease.AllowUserToAddRows = false;
             this.gvDisease.AllowUserToDeleteRows = false;
+            this.gvDisease.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gvDisease.AutoGenerateColumns = false;
             this.gvDisease.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvDisease.DataSource = this.bindSrcDiseases;
@@ -226,9 +226,8 @@
             this.gvDisease.ReadOnly = true;
             this.gvDisease.RowHeadersWidth = 51;
             this.gvDisease.RowTemplate.Height = 24;
-            this.gvDisease.Size = new System.Drawing.Size(1151, 393);
+            this.gvDisease.Size = new System.Drawing.Size(1287, 393);
             this.gvDisease.TabIndex = 1;
-            this.gvDisease.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvStudents_CellContentClick);
             // 
             // groupBox1
             // 
@@ -237,18 +236,16 @@
             this.groupBox1.Controls.Add(this.tbSearch);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.cb_Search);
-            this.groupBox1.Controls.Add(this.groupBox3);
-            this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Location = new System.Drawing.Point(0, 30);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(361, 113);
+            this.groupBox1.Size = new System.Drawing.Size(412, 113);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Пошук";
             // 
             // btnCancelSearch
             // 
-            this.btnCancelSearch.Location = new System.Drawing.Point(230, 76);
+            this.btnCancelSearch.Location = new System.Drawing.Point(281, 76);
             this.btnCancelSearch.Name = "btnCancelSearch";
             this.btnCancelSearch.Size = new System.Drawing.Size(121, 31);
             this.btnCancelSearch.TabIndex = 4;
@@ -258,17 +255,18 @@
             // 
             // btnSearch
             // 
+            this.btnSearch.BackColor = System.Drawing.SystemColors.Control;
             this.btnSearch.Location = new System.Drawing.Point(6, 76);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(121, 31);
             this.btnSearch.TabIndex = 2;
             this.btnSearch.Text = "Шукати";
-            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // tbSearch
             // 
-            this.tbSearch.Location = new System.Drawing.Point(251, 46);
+            this.tbSearch.Location = new System.Drawing.Point(302, 46);
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(100, 22);
             this.tbSearch.TabIndex = 2;
@@ -292,26 +290,8 @@
             "Рекомендовані ліки, к-сть"});
             this.cb_Search.Location = new System.Drawing.Point(6, 46);
             this.cb_Search.Name = "cb_Search";
-            this.cb_Search.Size = new System.Drawing.Size(213, 24);
+            this.cb_Search.Size = new System.Drawing.Size(243, 24);
             this.cb_Search.TabIndex = 0;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Location = new System.Drawing.Point(357, 1);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(200, 100);
-            this.groupBox3.TabIndex = 3;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "groupBox3";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Location = new System.Drawing.Point(357, 7);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(321, 100);
-            this.groupBox2.TabIndex = 0;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
             // 
             // groupBox4
             // 
@@ -319,9 +299,9 @@
             this.groupBox4.Controls.Add(this.btnCanselSort);
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Controls.Add(this.cbSort);
-            this.groupBox4.Location = new System.Drawing.Point(357, 30);
+            this.groupBox4.Location = new System.Drawing.Point(408, 30);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(423, 113);
+            this.groupBox4.Size = new System.Drawing.Size(430, 113);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Сортування";
@@ -378,9 +358,9 @@
             this.groupBox5.Controls.Add(this.tbFilter);
             this.groupBox5.Controls.Add(this.label3);
             this.groupBox5.Controls.Add(this.cbFilter);
-            this.groupBox5.Location = new System.Drawing.Point(776, 30);
+            this.groupBox5.Location = new System.Drawing.Point(838, 30);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(375, 113);
+            this.groupBox5.Size = new System.Drawing.Size(449, 113);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Фільтрація";
@@ -397,7 +377,7 @@
             // 
             // btnCanselFilter
             // 
-            this.btnCanselFilter.Location = new System.Drawing.Point(250, 76);
+            this.btnCanselFilter.Location = new System.Drawing.Point(318, 74);
             this.btnCanselFilter.Name = "btnCanselFilter";
             this.btnCanselFilter.Size = new System.Drawing.Size(119, 31);
             this.btnCanselFilter.TabIndex = 8;
@@ -407,11 +387,10 @@
             // 
             // tbFilter
             // 
-            this.tbFilter.Location = new System.Drawing.Point(269, 48);
+            this.tbFilter.Location = new System.Drawing.Point(337, 46);
             this.tbFilter.Name = "tbFilter";
             this.tbFilter.Size = new System.Drawing.Size(100, 22);
             this.tbFilter.TabIndex = 2;
-            this.tbFilter.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label3
             // 
@@ -430,7 +409,7 @@
             "Нижчий за"});
             this.cbFilter.Location = new System.Drawing.Point(10, 46);
             this.cbFilter.Name = "cbFilter";
-            this.cbFilter.Size = new System.Drawing.Size(214, 24);
+            this.cbFilter.Size = new System.Drawing.Size(260, 24);
             this.cbFilter.TabIndex = 0;
             // 
             // fMain
@@ -438,7 +417,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1151, 535);
+            this.ClientSize = new System.Drawing.Size(1287, 535);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox1);
@@ -483,8 +462,6 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.ToolStripButton tbGoMedBase;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.ComboBox cb_Search;

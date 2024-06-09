@@ -70,7 +70,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(289, 265);
+            this.groupBox1.Size = new System.Drawing.Size(298, 265);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Загальні данні";
@@ -78,7 +78,7 @@
             // chbIsContagious
             // 
             this.chbIsContagious.AutoSize = true;
-            this.chbIsContagious.Location = new System.Drawing.Point(15, 225);
+            this.chbIsContagious.Location = new System.Drawing.Point(15, 239);
             this.chbIsContagious.Name = "chbIsContagious";
             this.chbIsContagious.Size = new System.Drawing.Size(144, 20);
             this.chbIsContagious.TabIndex = 1;
@@ -96,50 +96,49 @@
             // 
             // tbMortalityRate
             // 
-            this.tbMortalityRate.Location = new System.Drawing.Point(183, 197);
+            this.tbMortalityRate.Location = new System.Drawing.Point(192, 197);
             this.tbMortalityRate.Name = "tbMortalityRate";
             this.tbMortalityRate.Size = new System.Drawing.Size(100, 22);
             this.tbMortalityRate.TabIndex = 15;
             // 
             // tbSeverityLevel
             // 
-            this.tbSeverityLevel.Location = new System.Drawing.Point(183, 166);
+            this.tbSeverityLevel.Location = new System.Drawing.Point(192, 166);
             this.tbSeverityLevel.Name = "tbSeverityLevel";
             this.tbSeverityLevel.Size = new System.Drawing.Size(100, 22);
             this.tbSeverityLevel.TabIndex = 11;
             // 
             // tbDot
             // 
-            this.tbDot.Location = new System.Drawing.Point(183, 138);
+            this.tbDot.Location = new System.Drawing.Point(192, 138);
             this.tbDot.Name = "tbDot";
             this.tbDot.Size = new System.Drawing.Size(100, 22);
             this.tbDot.TabIndex = 10;
             // 
             // tbSymptoms
             // 
-            this.tbSymptoms.Location = new System.Drawing.Point(183, 53);
+            this.tbSymptoms.Location = new System.Drawing.Point(192, 53);
             this.tbSymptoms.Name = "tbSymptoms";
             this.tbSymptoms.Size = new System.Drawing.Size(100, 22);
             this.tbSymptoms.TabIndex = 7;
             // 
             // tbRecommendedMedicines
             // 
-            this.tbRecommendedMedicines.Location = new System.Drawing.Point(183, 110);
+            this.tbRecommendedMedicines.Location = new System.Drawing.Point(192, 110);
             this.tbRecommendedMedicines.Name = "tbRecommendedMedicines";
             this.tbRecommendedMedicines.Size = new System.Drawing.Size(100, 22);
             this.tbRecommendedMedicines.TabIndex = 9;
             // 
             // tbProcedures
             // 
-            this.tbProcedures.Location = new System.Drawing.Point(183, 82);
+            this.tbProcedures.Location = new System.Drawing.Point(192, 82);
             this.tbProcedures.Name = "tbProcedures";
             this.tbProcedures.Size = new System.Drawing.Size(100, 22);
             this.tbProcedures.TabIndex = 8;
-            this.tbProcedures.TextChanged += new System.EventHandler(this.tbUniversity_TextChanged);
             // 
             // tbName
             // 
-            this.tbName.Location = new System.Drawing.Point(183, 21);
+            this.tbName.Location = new System.Drawing.Point(192, 21);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(100, 22);
             this.tbName.TabIndex = 6;
@@ -197,11 +196,10 @@
             this.label1.Size = new System.Drawing.Size(49, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Назва";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(307, 18);
+            this.btnOk.Location = new System.Drawing.Point(316, 18);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(105, 37);
             this.btnOk.TabIndex = 13;
@@ -211,7 +209,7 @@
             // 
             // btnCansel
             // 
-            this.btnCansel.Location = new System.Drawing.Point(307, 71);
+            this.btnCansel.Location = new System.Drawing.Point(316, 71);
             this.btnCansel.Name = "btnCansel";
             this.btnCansel.Size = new System.Drawing.Size(105, 37);
             this.btnCansel.TabIndex = 14;

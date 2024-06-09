@@ -93,7 +93,7 @@ namespace Курсач
             gvMed.DataSource = bindSrcMed;
             stockMedicineStocksList = new List<MedicineStock>();
 
-            FileStream fs = new FileStream("MedicineStock.txt", FileMode.Open);
+            FileStream fs = new FileStream("AutoSaveMed.txt", FileMode.Open);
             StreamReader sr = new StreamReader(fs, Encoding.UTF8);
             string text;
             try
@@ -102,7 +102,7 @@ namespace Курсач
                 {
                     string[] split = text.Split('\t');
                     MedicineStock med = new MedicineStock(split[0],
-                    int.Parse(split[1]), bool.Parse(split[3]), double.Parse(split[2]));
+                    int.Parse(split[1]), bool.Parse(split[2]), double.Parse(split[3]));
                     bindSrcMed.Add(med);
                     stockMedicineStocksList.Add(med);
                 }
@@ -140,6 +140,7 @@ namespace Курсач
             {
                 bindSrcMed.List[bindSrcMed.Position] = med;
             }
+            AutoSaveData();
         }
 
         private void btnDel_Click(object sender, EventArgs e)
@@ -149,6 +150,7 @@ namespace Курсач
             {
                 bindSrcMed.RemoveCurrent();
             }
+            AutoSaveData() ;
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -167,6 +169,7 @@ namespace Курсач
             {
                 Application.Exit();
             }
+            AutoSaveData();
         }
         private void btnSaveAsText_Click(object sender, EventArgs e)
         {
@@ -414,6 +417,7 @@ namespace Курсач
             this.Hide();
             fMain fmain = new fMain();
             fmain.Show();
+            AutoSaveData();
         }
     }
 }
