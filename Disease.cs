@@ -23,13 +23,13 @@ namespace Курсач
         public int SeverityLevel { get; set; }
         public double MortalityRate { get; set; }
         public bool IsContagious { get; set; }
+        public double SeverityIndex
+        {
+            get { return CalculateSeverityIndex(); }
+        }
         public override double CalculateSeverityIndex()
         {
             return SeverityLevel * Dot;
-        }
-        public double GetSeverityIndex()
-        {
-            return CalculateSeverityIndex();
         }
         public Disease()
         {

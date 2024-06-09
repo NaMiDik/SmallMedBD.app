@@ -99,6 +99,12 @@ namespace Курсач
             gvDisease.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
+            column.DataPropertyName = "SeverityIndex";
+            column.Name = "Індекс тяжкості";
+            column.Width = 100;
+            gvDisease.Columns.Add(column);
+
+            column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "MortalityRate";
             column.Name = "Смертність %";
             column.Width = 80;
