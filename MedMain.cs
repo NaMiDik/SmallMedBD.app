@@ -14,11 +14,42 @@ namespace Курсач
 {
     public partial class MedMain : Form
     {
+        private static List<MedicineStock> medicines;
         private List<MedicineStock> stockMedicineStocksList;
         public List<MedicineStock> medicinestocksList = new List<MedicineStock>();
         public MedMain()
         {
             InitializeComponent();
+            LoadMedicines();
+        }
+        private void LoadMedicines()
+        {
+            // Ініціалізація колекції медикаментів
+            medicines = new List<MedicineStock>();
+
+            // Завантаження даних про медикаменти (наприклад, з файлу або бази даних)
+            // Тут можна додати логіку завантаження даних
+            // Наприклад, завантаження з файлу MedicineStock.txt
+            string[] lines = File.ReadAllLines("AutoSaveMed.txt");
+            foreach (var line in lines)
+            {
+                // Припустимо, що кожен рядок у файлі містить інформацію про медикамент
+                // Формат рядка: Назва,Кількість
+                var parts = line.Split(',');
+                if (parts.Length == 2)
+                {
+                    var name = parts[0];
+                    var quantity = int.Parse(parts[1]);
+                    medicines.Add(new MedicineStock { Name = name, Quantity = quantity });
+                }
+            }
+        }
+
+        public static bool CheckMedicineAvailability(string medicineName)
+        {
+            // Перевіряє наявність медикаментів у базі MedMain
+            var medicine = medicines.FirstOrDefault(m => m.Name == medicineName);
+            return medicine != null && medicine.Quantity > 0;
         }
         private void CancelAll()
         {

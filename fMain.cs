@@ -14,11 +14,44 @@ namespace Курсач
 {
     public partial class fMain : Form
     {
+        private List<Disease> diseases;
         private List<Disease> stockDiseasesList;
         public List<Disease> diseasesList = new List<Disease>();
         public fMain()
         {
             InitializeComponent();
+            LoadDiseases();
+        }
+        private void LoadDiseases()
+        {
+            // Ініціалізація колекції хвороб
+            diseases = new List<Disease>();
+
+            // Завантаження даних про хвороби (наприклад, з файлу AutoSave.txt)
+            string[] lines = File.ReadAllLines("AutoSave.txt");
+            foreach (var line in lines)
+            {
+                // Припустимо, що формат рядка: НазваХвороби, Опис, ЗапобіжніЗаходи, РекомендованіЛіки, ІншіПоля
+                var parts = line.Split('\t');
+                if (parts.Length >= 4)
+                {
+                    var name = parts[0];
+                    var recommendedMedicines = parts[3]; // Зберігаємо як рядок
+                    diseases.Add(new Disease { Name = name, RecommendedMedicines = recommendedMedicines });
+                }
+            }
+        }
+
+        public List<Disease> GetDiseases()
+        {
+            // Повертає список хвороб з бази
+            return diseases;
+        }
+
+        public Disease GetDiseaseByName(string name)
+        {
+            // Повертає хворобу за назвою
+            return diseases.FirstOrDefault(d => d.Name == name);
         }
         private void CancelAll()
         {
@@ -452,6 +485,12 @@ namespace Курсач
             MedMain medmain = new MedMain();
             medmain.Show();
             AutoSaveData();
+        }
+
+        private void btnPrescription_Click(object sender, EventArgs e)
+        {
+            PrescriptionForm prescriptionForm = new PrescriptionForm(this);
+            prescriptionForm.Show();
         }
     }
 }

@@ -43,6 +43,8 @@
             this.btnOpenFromBinary = new System.Windows.Forms.ToolStripButton();
             this.btnExit = new System.Windows.Forms.ToolStripButton();
             this.tbGoMedBase = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnPrescription = new System.Windows.Forms.ToolStripButton();
             this.gvDisease = new System.Windows.Forms.DataGridView();
             this.bindSrcDiseases = new System.Windows.Forms.BindingSource(this.components);
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
@@ -86,10 +88,12 @@
             this.btnOpenFromText,
             this.btnOpenFromBinary,
             this.btnExit,
-            this.tbGoMedBase});
+            this.tbGoMedBase,
+            this.toolStripSeparator1,
+            this.btnPrescription});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1287, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(1287, 31);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -99,7 +103,7 @@
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
             this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(29, 24);
+            this.btnAdd.Size = new System.Drawing.Size(29, 28);
             this.btnAdd.Text = "Додати запис про Хворобу";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -210,6 +214,21 @@
             this.tbGoMedBase.Size = new System.Drawing.Size(29, 28);
             this.tbGoMedBase.Text = "Перейти до бази медикаментів";
             this.tbGoMedBase.Click += new System.EventHandler(this.tbGoMedBase_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            // 
+            // btnPrescription
+            // 
+            this.btnPrescription.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnPrescription.Image = ((System.Drawing.Image)(resources.GetObject("btnPrescription.Image")));
+            this.btnPrescription.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnPrescription.Name = "btnPrescription";
+            this.btnPrescription.Size = new System.Drawing.Size(29, 28);
+            this.btnPrescription.Text = "Виписати рецепт";
+            this.btnPrescription.Click += new System.EventHandler(this.btnPrescription_Click);
             // 
             // gvDisease
             // 
@@ -478,6 +497,8 @@
         private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.Button btnCanselFilter;
         private System.Windows.Forms.TextBox tbFilter;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton btnPrescription;
     }
 }
 

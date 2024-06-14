@@ -85,6 +85,12 @@
     </Compile>
     <Compile Include="Med_Actions.cs" />
     <Compile Include="MIActions_Table.cs" />
+    <Compile Include="PrescriptionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrescriptionForm.Designer.cs">
+      <DependentUpon>PrescriptionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Disease.cs" />
@@ -102,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MedMain.resx">
       <DependentUpon>MedMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrescriptionForm.resx">
+      <DependentUpon>PrescriptionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -128,6 +137,16 @@
   <ItemGroup>
     <Content Include="IconProg.ico" />
     <Content Include="images\bgStartImage.jpg" />
+    <Content Include="images\bthEditImage.png" />
+    <Content Include="images\btnAddImage.png" />
+    <Content Include="images\btnClearImage.jpg" />
+    <Content Include="images\btnDelImage.png" />
+    <Content Include="images\btnExitImage.png" />
+    <Content Include="images\btnPrescription.jpg" />
+    <Content Include="images\btnReadBin.png" />
+    <Content Include="images\btnReadTxt.png" />
+    <Content Include="images\btnSaveBin.png" />
+    <Content Include="images\btnSaveTxt.png" />
     <Content Include="images\IconProg.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
